@@ -39,6 +39,11 @@ class MainActivity : ComponentActivity() {
             val user: User = User("张三", 14)
             userList.add(user)
 
+            for (i in 0.. 10) {
+                userList.add(User("李$i", i))
+            }
+
+
         }
     }
 }
