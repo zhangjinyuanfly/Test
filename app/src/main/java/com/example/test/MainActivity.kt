@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.lifecycleScope
 import com.example.test.ui.theme.TestTheme
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.map
 
 class MainActivity : ComponentActivity() {
     val userList = mutableListOf<User>()
@@ -43,12 +45,21 @@ class MainActivity : ComponentActivity() {
                 userList.add(User("李$i", i))
             }
 
+            userList.asFlow().map {
+                it
+            }.collect{
+                Log.d("zjy","user = $it")
+            }
 
         }
     }
 }
 
 class User(var name: String = "", var age: Int = -1) {
+
+    override fun toString(): String {
+        return "User(name='$name', age=$age)"
+    }
 }
 
 @Composable
