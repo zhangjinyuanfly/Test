@@ -16,6 +16,8 @@ import com.example.test.ui.theme.TestTheme
 import kotlinx.coroutines.delay
 
 class MainActivity : ComponentActivity() {
+    val userList = mutableListOf<User>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,8 +36,14 @@ class MainActivity : ComponentActivity() {
             delay(2000)
             Log.d("zjy","start...")
 
+            val user: User = User("张三", 14)
+            userList.add(user)
+
         }
     }
+}
+
+class User(var name: String = "", var age: Int = -1) {
 }
 
 @Composable
